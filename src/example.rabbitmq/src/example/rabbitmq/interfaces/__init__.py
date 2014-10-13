@@ -1,0 +1,2 @@
+from examplerabbitmqlayer import IExampleRabbitmqLayer
+
