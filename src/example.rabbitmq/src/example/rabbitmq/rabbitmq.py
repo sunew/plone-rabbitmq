@@ -30,6 +30,7 @@ from Products.CMFPlone.utils import safe_unicode
 SIMPLE_DEBUG = True
 
 
+
 logger = logging.getLogger("rabbitmqtest")
 
 

@@ -4,7 +4,7 @@
 """Create a "virtual" Python installation
 """
 
-__version__ = "1.11.2"
+__version__ = "1.11.6"
 virtualenv_version = __version__  # legacy
 
 import base64
@@ -1858,6 +1858,9 @@ def after_install(options, home_dir):
         logger.notify('Running buildout bootstrap')
         subprocess.call([os.path.join(home_dir, bin, 'python'),
                         'buildout-bootstrap.py', '-v 2.2.1'])
+
+def adjust_options(options, args):
+    options.no_pip = True
 
 
 def convert(s):

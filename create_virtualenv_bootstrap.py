@@ -19,5 +19,8 @@ def after_install(options, home_dir):
         logger.notify('Running buildout bootstrap')
         subprocess.call([os.path.join(home_dir, bin, 'python'),
                         'buildout-bootstrap.py', '-v 2.2.1'])
+
+def adjust_options(options, args):
+    options.no_pip = True
 """))
 f = open('bootstrap_virtualenv_.py', 'w').write(output)
