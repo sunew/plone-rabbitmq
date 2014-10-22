@@ -130,6 +130,10 @@ And after a few retries it came back up.
 
 Wonder why it closed with a 404 on the keepalive exchange. Is there, and came back up.
 
+## stopping and starting rabbitmq
+Running zope instances reconnect.
+
+
 ## test via commandline
 Use the script publishmsg:
 
