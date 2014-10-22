@@ -64,6 +64,7 @@ class TestProducer(Producer):
 
 
 class TestConsumer(Consumer):
+    # is also my queue name and my routing key
     grok.name("testrabbit.testqueue")
 
     connection_id = "testrabbit"
@@ -91,3 +92,4 @@ def processTestMessage(message, event):
         return
 
     site = getSite()
+    message.ack()
