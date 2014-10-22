@@ -24,3 +24,12 @@ On zope startup:
 - a channel for the connection
 
 - And: a durable exchange with the name of the connection_id 
+
+
+## No connection problem
+After zope startup, no connection is made to rabbitmq. No connection shows up in the rabbitmq interface.
+Trying to send a message: 
+    
+    collective.zamqp No connection. Durable message was left into volatile memory to wait for a new connection
+
+Restart rabbitmq, zope, zeo: still the same problem.
