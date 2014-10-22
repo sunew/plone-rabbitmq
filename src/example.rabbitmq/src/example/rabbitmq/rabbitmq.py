@@ -52,6 +52,7 @@ class ITestMessage(Interface):
 
 
 class TestProducer(Producer):
+    # is also my routing key:
     grok.name("testrabbit.testqueue")
 
     connection_id = "testrabbit"
