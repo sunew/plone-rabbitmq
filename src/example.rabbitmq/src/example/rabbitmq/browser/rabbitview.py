@@ -6,7 +6,7 @@ from Products.CMFCore.utils import getToolByName
 from example.rabbitmq import rabbitmqMessageFactory as _
 
 
-class IRabbitViewView(Interface):
+class IRabbitView(Interface):
     """
     RabbitView view interface
     """
@@ -15,11 +15,11 @@ class IRabbitViewView(Interface):
         """ test method"""
 
 
-class RabbitViewView(BrowserView):
+class RabbitView(BrowserView):
     """
     RabbitView browser view
     """
-    implements(IRabbitViewView)
+    implements(IRabbitView)
 
     def __init__(self, context, request):
         self.context = context

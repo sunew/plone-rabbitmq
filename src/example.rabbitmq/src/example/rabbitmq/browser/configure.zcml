@@ -1,14 +1,13 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser"
            i18n_domain="example.rabbitmq">
-    <!-- -*- extra stuff goes here -*- -->
 
   <browser:page
       for="*"
-      name="rabbitview_view"
-      class=".rabbitviewview.RabbitViewView"
-      template="rabbitviewview.pt"
-      allowed_interface=".rabbitviewview.IRabbitViewView"
+      name="rabbitview"
+      class=".rabbitview.RabbitView"
+      template="rabbitview.pt"
+      allowed_interface=".rabbitview.IRabbitView"
       permission="zope.Public"
       />
 
@@ -18,23 +17,5 @@
       class=".rabbitviewcontroller.RabbitController"
       permission="zope.Public"
       />
-
-
-    <!-- If you are using plone version 3.0, you will need to include the
-         plone.browserlayer package in your buildout and uncomment the following
-         line in order to use IExampleRabbitmqLayer as a layer attribute -->
-    <!--
-    <include package="plone.browserlayer" />
-    -->
-    <!-- Example of browser component with IExampleRabbitmqLayer layer attribute -->
-    <!--
-    <browser:page
-        name="my-view"
-        for="*"
-        permission="zope.Public"
-        template="my-view.pt"
-        layer="..interfaces.IExampleRabbitmqLayer"
-        />
-    -->
 
 </configure>
