@@ -38,7 +38,6 @@ class RabbitController(BrowserView):
         return getToolByName(self.context, 'portal_url').getPortalObject()
 
     def __call__(self):
-        from ipdb import set_trace; set_trace()
         if self.request.form.has_key('test-rabbit'):
             # demo: using the session token as id:
             session_id = self.request.SESSION.token
