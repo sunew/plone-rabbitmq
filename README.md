@@ -82,7 +82,38 @@ Durability for the message (delivery_mode = 2) is on per default if durable=True
 
 Durability for queue and exchange is on if durable=True for producer and/or consumer.
 
-##
+## Confirms
+See https://www.rabbitmq.com/confirms.html
+and http://stackoverflow.com/questions/17224331/how-to-ensure-that-messages-get-delivered
+
+We need to set a flag on the channel.
+
+Not possible directly via collective.zampq
+
+But we can access the channel directly:
+
+            def confirm_callback(method):
+                logger.info("Message sending confirmed.")
+
+            producer._channel.confirm_delivery(callback=confirm_callback)
+            producer.publish(
+            ...
+
+
+
+## Reject
+The standard is unclear on this point. See
+https://gavinroy.com/posts/deeper-down-the-rabbit-hole-of-message-redeli.html
+"If the requeue parameter is True when calling Basic.Reject RabbitMQ will treat the rejected message as a new message in the queue and may deliver it again to the consumer who rejected it. If the requeue parameter is False then RabbitMQ will delete the message from its stack."
+og: http://www.rabbitmq.com/blog/2010/08/03/well-ill-let-you-go-basicreject-in-rabbitmq/
+
+## TTL
+message and queue setting.
+Default = not set, = infinity.
+
+## Dead letter exchange
+see http://yuserinterface.com/dev/2013/01/08/how-to-schedule-delay-messages-with-rabbitmq-using-a-dead-letter-exchange/
+
 
 ## Keepalive
 set keepalive to a number of seconds.
@@ -129,6 +160,12 @@ Happens after:
 And after a few retries it came back up.
 
 Wonder why it closed with a 404 on the keepalive exchange. Is there, and came back up.
+
+## UserWarning: Pika: Write buffer exceeded warning threshold
+http://stackoverflow.com/questions/11210693/pika-write-buffer-exceeded-warning
+
+Betyder at vi sender mere end vi consumer. Det sker typisk under test. Er ikke vigtigt.
+
 
 ## stopping and starting rabbitmq
 Running zope instances reconnect.
